@@ -13,7 +13,7 @@ const MainStack = createStackNavigator();
 
 const Navigator = () => (
   <NavigationContainer>
-    <MainStack.Navigator>
+    <MainStack.Navigator mode="modal">
       <MainStack.Screen
         name="Home"
         component={Home}
@@ -26,6 +26,8 @@ const Navigator = () => (
               icon={searchIcon}
             />
           ),
+          headerStyle: {backgroundColor: '#000083'},
+          headerTintColor: '#FFF',
         })}
       />
       <MainStack.Screen name="Search" component={Search} />
