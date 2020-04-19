@@ -6,4 +6,7 @@ export default EStyleSheet.create({
     width: 30,
     height: 30,
   },
+  whiteTintColor: {
+    tintColor: '$white',
+  },
 });

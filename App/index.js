@@ -4,6 +4,7 @@ import Navigator from './config/routes';
 
 EStyleSheet.build({
   $darkblue: '#000083',
+  $white: '#fff',
 });
 
 export default () => <Navigator />;

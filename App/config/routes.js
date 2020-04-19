@@ -24,6 +24,7 @@ const Navigator = () => (
                 navigation.navigate('Search');
               }}
               icon={searchIcon}
+              tintColor="#fff"
             />
           ),
           headerStyle: {backgroundColor: '#000083'},
