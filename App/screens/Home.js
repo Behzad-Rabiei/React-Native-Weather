@@ -41,7 +41,7 @@ class Home extends Component {
 
   render() {
     return (
-      <Container>
+      <Container backgroundColor="#000083">
         <StatusBar barStyle="light-content" />
       </Container>
     );
