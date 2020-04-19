@@ -8,6 +8,7 @@ import Search from '../screens/Search';
 import {HeaderRightButton} from '../components/HeaderRightButton';
 
 const searchIcon = require('../../assets/icons8-search-in-cloud-100.png');
+const cancelIcon = require('../../assets/icons8-cancel-96.png');
 
 const MainStack = createStackNavigator();
 
@@ -31,7 +32,19 @@ const Navigator = () => (
           headerTintColor: '#FFF',
         })}
       />
-      <MainStack.Screen name="Search" component={Search} />
+      <MainStack.Screen
+        name="Search"
+        component={Search}
+        options={({navigation}) => ({
+          headerLeft: null,
+          headerRight: () => (
+            <HeaderRightButton
+              onPress={() => navigation.navigate('Home')}
+              icon={cancelIcon}
+            />
+          ),
+        })}
+      />
     </MainStack.Navigator>
   </NavigationContainer>
 );
