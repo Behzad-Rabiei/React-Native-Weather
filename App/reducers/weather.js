@@ -9,8 +9,8 @@ const weather = (state = initialState, action) => {
     case SET_WEATHER: {
       return {
         ...state,
-        weather: action.value,
-        isloading: false,
+        currentWeather: action.value,
+        isloadingWeahter: false,
       };
     }
     default:

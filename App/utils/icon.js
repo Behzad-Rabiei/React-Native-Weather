@@ -1,4 +1,4 @@
-export const getWeatherIcon = ({icon}) => {
+export const getWeatherIcon = (icon) => {
   switch (icon) {
     case '01d': {
       return require('../../assets/weather-icons/01d.png');

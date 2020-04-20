@@ -9,8 +9,8 @@ const forecast = (state = initialState, action) => {
     case SET_FORECAST: {
       return {
         ...state,
-        forecast: action.value,
-        isloading: false,
+        currentForecast: action.value,
+        isloadingForecast: false,
       };
     }
     default:
