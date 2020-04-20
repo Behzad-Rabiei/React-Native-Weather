@@ -1,51 +1,47 @@
 import React, {Component} from 'react';
-import {StatusBar} from 'react-native';
-// import GetLocation from 'react-native-get-location';
-// import {weatherAPI} from '../utils/weatherAPI';
+import {connect} from 'react-redux';
+import {StatusBar, ScrollView, SafeAreaView} from 'react-native';
+
 import {Container} from '../components/Container';
+import {WeatherIcon} from '../components/WeatherIcon';
+
+import {getCurrentWeather} from '../utils/weatherAPI';
 
 class Home extends Component {
-  // componentDidMount() {
-  //   GetLocation.getCurrentPosition({
-  //     enableHighAccuracy: true,
-  //     timeout: 15000,
-  //   })
-  //     .then((location) => {
-  //       this.getCurrentWeather('/weather', {
-  //         position: location,
-  //       });
-  //       this.getCurrentWeather('/forecast', {
-  //         position: location,
-  //       });
-  //       this.getCurrentWeather('/weather', {
-  //         name: 'Isfahan',
-  //       });
-  //       this.getCurrentWeather('/forecast', {
-  //         name: 'Isfahan',
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       const {code, message} = error;
-  //       console.warn(code, message);
-  //     });
-  // }
-
-  // getCurrentWeather = (path, {position, name}) => {
-  //   weatherAPI(path, {position, name})
-  //     .then((response) => console.log(response))
-  //     .catch((error) => {
-  //       const {code, message} = error;
-  //       console.warn(code, message);
-  //     });
-  // };
+  componentDidMount() {
+    getCurrentWeather('/weather', {name: 'Isfahan'}, this.props.dispatch);
+  }
 
   render() {
+    const {weather} = this.props.currentWeather;
+    const {isloadingWeahter} = this.props;
+    if (isloadingWeahter) {
+      return (
+        <Container backgroundColor="#000083">
+          <StatusBar barStyle="light-content" />
+        </Container>
+      );
+    }
+
     return (
       <Container backgroundColor="#000083">
         <StatusBar barStyle="light-content" />
+        <ScrollView>
+          <SafeAreaView>
+            <WeatherIcon icon={weather[0].icon} />
+          </SafeAreaView>
+        </ScrollView>
       </Container>
     );
   }
 }
-
-export default Home;
+const mapStateToProps = (state) => {
+  const {currentWeather, isloadingWeahter} = state.weather;
+  const {currentForecast} = state.forecast;
+  return {
+    currentWeather,
+    currentForecast,
+    isloadingWeahter,
+  };
+};
+export default connect(mapStateToProps)(Home);
