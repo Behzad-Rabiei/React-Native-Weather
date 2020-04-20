@@ -4,5 +4,6 @@ export default EStyleSheet.create({
   basicRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    marginTop: 15,
   },
 });
