@@ -32,8 +32,13 @@ class Navigator extends Component {
                   tintColor="#fff"
                 />
               ),
-              headerStyle: {backgroundColor: '#000083'},
-              headerTintColor: '#FFF',
+              headerStyle: {
+                backgroundColor: '#3145b7',
+                borderBottomColor: '#3145b7',
+                shadowColor: 'transparent',
+              },
+
+              headerTintColor: '#fff',
               title: name,
             })}
           />
