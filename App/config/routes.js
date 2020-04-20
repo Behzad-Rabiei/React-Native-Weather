@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -12,41 +13,54 @@ const cancelIcon = require('../../assets/icons8-cancel-96.png');
 
 const MainStack = createStackNavigator();
 
-const Navigator = () => (
-  <NavigationContainer>
-    <MainStack.Navigator mode="modal">
-      <MainStack.Screen
-        name="Home"
-        component={Home}
-        options={({navigation}) => ({
-          headerRight: () => (
-            <HeaderRightButton
-              onPress={() => {
-                navigation.navigate('Search');
-              }}
-              icon={searchIcon}
-              tintColor="#fff"
-            />
-          ),
-          headerStyle: {backgroundColor: '#000083'},
-          headerTintColor: '#FFF',
-        })}
-      />
-      <MainStack.Screen
-        name="Search"
-        component={Search}
-        options={({navigation}) => ({
-          headerLeft: null,
-          headerRight: () => (
-            <HeaderRightButton
-              onPress={() => navigation.navigate('Home')}
-              icon={cancelIcon}
-            />
-          ),
-        })}
-      />
-    </MainStack.Navigator>
-  </NavigationContainer>
-);
+class Navigator extends Component {
+  render() {
+    const {name} = this.props;
+    return (
+      <NavigationContainer>
+        <MainStack.Navigator mode="modal">
+          <MainStack.Screen
+            name="Home"
+            component={Home}
+            options={({navigation}) => ({
+              headerRight: () => (
+                <HeaderRightButton
+                  onPress={() => {
+                    navigation.navigate('Search');
+                  }}
+                  icon={searchIcon}
+                  tintColor="#fff"
+                />
+              ),
+              headerStyle: {backgroundColor: '#000083'},
+              headerTintColor: '#FFF',
+              title: name,
+            })}
+          />
+          <MainStack.Screen
+            name="Search"
+            component={Search}
+            options={({navigation}) => ({
+              headerLeft: null,
+              headerRight: () => (
+                <HeaderRightButton
+                  onPress={() => navigation.navigate('Home')}
+                  icon={cancelIcon}
+                />
+              ),
+            })}
+          />
+        </MainStack.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
 
-export default Navigator;
+const mapStateToProps = (state) => {
+  const {name} = state.weather.weather;
+  return {
+    name,
+  };
+};
+
+export default connect(mapStateToProps)(Navigator);
