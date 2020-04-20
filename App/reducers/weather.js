@@ -1,8 +1,8 @@
 import {SET_WEATHER} from '../actions/actionType';
 
 const initialState = {
-  weather: {},
-  isloading: true,
+  currentWeather: {},
+  isloadingWeahter: true,
 };
 const weather = (state = initialState, action) => {
   switch (action.type) {

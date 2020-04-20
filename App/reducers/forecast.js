@@ -1,8 +1,8 @@
 import {SET_FORECAST} from '../actions/actionType';
 
 const initialState = {
-  forecast: {},
-  isloading: true,
+  currentForecast: {},
+  isloadingForecast: true,
 };
 const forecast = (state = initialState, action) => {
   switch (action.type) {
