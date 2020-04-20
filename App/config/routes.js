@@ -57,7 +57,7 @@ class Navigator extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {name} = state.weather.weather;
+  const {name} = state.weather.currentWeather;
   return {
     name,
   };
