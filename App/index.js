@@ -5,7 +5,7 @@ import Navigator from './config/routes';
 import store from './config/store';
 
 EStyleSheet.build({
-  $darkblue: '#000083',
+  $darkblue: '#3145b7',
   $white: '#fff',
 });
 
