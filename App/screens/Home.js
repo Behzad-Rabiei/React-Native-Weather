@@ -12,7 +12,8 @@ import {toCelsius} from '../utils/convert';
 
 class Home extends Component {
   componentDidMount() {
-    getCurrentWeather('/weather', {name: 'milan'}, this.props.dispatch);
+    getCurrentWeather('/weather', {name: 'Milan'}, this.props.dispatch);
+    getCurrentWeather('/forecast', {name: 'Milan'}, this.props.dispatch);
   }
 
   render() {
@@ -51,6 +52,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   const {currentWeather, isloadingWeahter} = state.weather;
   const {currentForecast} = state.forecast;
+
   return {
     currentWeather,
     currentForecast,
