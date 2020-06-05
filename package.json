@@ -36,6 +36,7 @@
     "eslint": "6.8.0",
     "eslint-config-handlebarlabs": "0.0.5",
     "jest": "25.3.0",
+    "logkitty": "0.7.1",
     "metro-react-native-babel-preset": "0.59.0",
     "prettier": "2.0.4",
     "react-test-renderer": "16.11.0"
