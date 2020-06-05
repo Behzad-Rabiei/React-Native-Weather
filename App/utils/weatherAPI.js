@@ -8,6 +8,7 @@ export const weatherAPI = (path, {position, name}) => {
     suffix = `lat=${position.latitude}&lon=${position.longitude}`;
   } else if (name) {
     suffix = `q=${name}`;
+    const x = 'q=${name}';
   }
   return fetch(
     `https://api.openweathermap.org/data/2.5${path}?appid=${appID}&units=imperial&${suffix}`,
